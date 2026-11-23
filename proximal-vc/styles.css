@@ -33,8 +33,6 @@
 
 html { color-scheme: dark; }
 
-html { scroll-snap-type: y proximity; }
-
 body {
   margin: 0;
   background: var(--bg);
@@ -101,13 +99,6 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   flex-direction: column;
   justify-content: safe center;
   min-height: 100svh;
-  scroll-snap-align: start;
-}
-
-.snap-end {
-  height: 1px;
-  width: 100%;
-  scroll-snap-align: end;
 }
 
 .hero {
@@ -604,7 +595,6 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 .js .reveal.in .tile:nth-child(n + 8) { transition-delay: 0.4s; }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   .js .reveal .tile,
   .js .reveal .links li,
   .js .reveal .prices li,
