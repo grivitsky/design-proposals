@@ -210,10 +210,16 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   transition: color var(--ease);
 }
 
-.links .arrow {
-  display: inline-block;
-  margin-left: 10px;
-  transition: transform var(--ease);
+.arrow {
+  width: 0.9em;
+  height: 0.9em;
+  flex: none;
+  vertical-align: -0.12em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .links:hover a { color: rgba(255, 255, 255, 0.34); }
@@ -226,8 +232,6 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 .links a:hover::before { width: 100%; }
 
 .links a:hover .meta { color: var(--ink); }
-
-.links a:hover .arrow { transform: translateX(5px) rotate(-35deg); }
 
 .stage {
   width: min(1440px, calc(100% - var(--gutter) * 2));
