@@ -205,7 +205,7 @@
 
     <section class="cta slide" id="contact">
       <div class="stage reveal">
-        <h2>Let’s get started</h2>
+        <h2>Let’s build it together.</h2>
         <a class="button" href="https://t.me/grivitsky" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21.5 3.5 2.8 10.7c-1.3.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.7.1 1 .9.9.4-.1.6-.3.8-.6l2.6-2.5 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.1c.3-1.2-.4-1.8-1.9-1.3zM9.2 13.7l8.8-5.5c.4-.3.8-.1.5.2l-7.5 6.8-.3 3.2-1.5-4.7z"/></svg>
           Message on Telegram
@@ -216,6 +216,12 @@
   <script>
     document.documentElement.classList.add("js");
     document.querySelectorAll(".slide").forEach(function (slide) {
+      var start = document.createElement("div");
+      var end = document.createElement("div");
+      start.className = "snap-edge snap-edge-start";
+      end.className = "snap-edge snap-edge-end";
+      slide.prepend(start);
+      slide.append(end);
       if (slide.scrollHeight > window.innerHeight + 24) slide.classList.add("is-tall");
     });
     if ("IntersectionObserver" in window) {
@@ -226,21 +232,78 @@
       }, { threshold: 0.04 });
       document.querySelectorAll(".reveal").forEach(function (el) { shown.observe(el); });
     }
-    var tall = document.querySelectorAll(".is-tall");
-    function snapWhileInside() {
-      if (!window.matchMedia("(min-width: 900px) and (min-height: 700px)").matches) return;
-      var y = window.scrollY;
-      var vh = window.innerHeight;
-      var inside = false;
-      tall.forEach(function (el) {
+    var hold = 0;
+    var moving = false;
+    function slideBoxes() {
+      return Array.prototype.map.call(document.querySelectorAll(".slide"), function (el) {
         var top = el.offsetTop;
-        var bottom = top + el.offsetHeight;
-        if (y > top + 48 && y + vh < bottom - 48) inside = true;
+        var end = Math.max(top, top + el.offsetHeight - window.innerHeight);
+        return { top: top, end: end, tall: el.classList.contains("is-tall") };
       });
-      document.documentElement.classList.toggle("snap-off", inside);
     }
-    window.addEventListener("scroll", snapWhileInside, { passive: true });
-    window.addEventListener("resize", snapWhileInside);
+    function springTo(target) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.scrollTo(0, target);
+        hold = 0;
+        return;
+      }
+      moving = true;
+      var from = window.scrollY;
+      var change = target - from;
+      var t0 = performance.now();
+      function frame(now) {
+        var t = Math.min(1, (now - t0) / 560);
+        var c = 1.4;
+        var eased = 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2);
+        window.scrollTo(0, from + change * eased);
+        if (t < 1) requestAnimationFrame(frame);
+        else { moving = false; hold = 0; }
+      }
+      requestAnimationFrame(frame);
+    }
+    function gate(dy) {
+      if (moving) return true;
+      var boxes = slideBoxes();
+      var y = window.scrollY;
+      var index = -1;
+      for (var i = 0; i < boxes.length; i++) {
+        if (y >= boxes[i].top - 4 && y <= boxes[i].end + 4) index = i;
+      }
+      if (index < 0) { hold = 0; return false; }
+      var here = boxes[index];
+      var leavingDown = here.tall && dy > 0 && y >= here.end - 8 && index < boxes.length - 1;
+      var leavingUp = dy < 0 && y <= here.top + 8 && index > 0 && boxes[index - 1].tall;
+      if (!leavingDown && !leavingUp) { hold = 0; return false; }
+      hold += dy;
+      if (Math.abs(hold) < 120) return true;
+      var target = leavingDown ? boxes[index + 1].top : boxes[index - 1].end;
+      hold = 0;
+      springTo(target);
+      return true;
+    }
+    window.addEventListener("wheel", function (event) {
+      var dy = event.deltaY;
+      if (event.deltaMode === 1) dy *= 16;
+      if (event.deltaMode === 2) dy *= window.innerHeight;
+      if (gate(dy)) event.preventDefault();
+    }, { passive: false });
+    var touchY = null;
+    window.addEventListener("touchstart", function (event) {
+      touchY = event.touches[0].clientY;
+      hold = 0;
+    }, { passive: true });
+    window.addEventListener("touchmove", function (event) {
+      if (touchY == null) return;
+      var y = event.touches[0].clientY;
+      var dy = touchY - y;
+      touchY = y;
+      if (gate(dy)) event.preventDefault();
+    }, { passive: false });
+    window.addEventListener("resize", function () {
+      document.querySelectorAll(".slide").forEach(function (slide) {
+        slide.classList.toggle("is-tall", slide.scrollHeight > window.innerHeight + 24);
+      });
+    });
     document.querySelectorAll('a[href="#"]').forEach(function (link) {
       link.addEventListener("click", function (event) {
         event.preventDefault();
