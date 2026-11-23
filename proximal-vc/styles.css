@@ -1,6 +1,6 @@
 /*
   Proximal Ventures — design proposal
-  Eggshell editorial page. Inter only. Headings at 600.
+  Black editorial slides. Inter only. Headings at 600.
 */
 
 @font-face {
@@ -13,13 +13,12 @@
 }
 
 :root {
-  --eggshell: #fdfcfc;
-  --stone: #ebe8e4;
-  --ink: #000000;
-  --graphite: #44403b;
-  --smoke: #777169;
-  --ash: #a59f97;
-  --line: var(--stone);
+  --bg: #000000;
+  --ink: #ffffff;
+  --line: rgba(255, 255, 255, 0.16);
+  --smoke: rgba(255, 255, 255, 0.55);
+  --ash: rgba(255, 255, 255, 0.38);
+  --plate: #141414;
   --slate: var(--smoke);
   --link: var(--ink);
   --max: 1080px;
@@ -30,11 +29,11 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { color-scheme: light; }
+html { color-scheme: dark; }
 
 body {
   margin: 0;
-  background: var(--eggshell);
+  background: var(--bg);
   color: var(--ink);
   font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -55,14 +54,14 @@ a { color: inherit; }
   outline-offset: 3px;
 }
 
-::selection { background: #f0eeeb; }
+::selection { background: #222; color: #fff; }
 
 .skip {
   position: absolute;
   left: 16px;
   top: -48px;
   background: var(--ink);
-  color: var(--eggshell);
+  color: #000;
   padding: 8px 14px;
   border-radius: 9999px;
   text-decoration: none;
@@ -94,7 +93,10 @@ h1 {
 h2 { font-size: clamp(40px, 5vw, 64px); }
 
 .hero {
-  padding: 18vh 0 10vh;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: 48px 0;
 }
 
 .kicker {
@@ -105,18 +107,22 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   text-transform: uppercase;
 }
 
-.quiet {
-  margin-top: 36px;
-  color: var(--smoke);
-  font-size: 15px;
-}
-
 .block {
-  padding-top: 120px;
-  border-top: 1px solid var(--stone);
+  padding: 72px 0 96px;
+  border-top: 1px solid var(--line);
 }
 
-.head { margin-bottom: 36px; }
+#about {
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding: 48px 0;
+}
+
+.head {
+  margin-bottom: 36px;
+  text-align: left;
+}
 
 .about {
   display: grid;
@@ -147,13 +153,13 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   align-items: center;
   gap: 16px;
   padding: 18px 0;
-  border-top: 1px solid var(--stone);
+  border-top: 1px solid var(--line);
   text-decoration: none;
   letter-spacing: 0;
   font-size: 17px;
 }
 
-.links li:last-child a { border-bottom: 1px solid var(--stone); }
+.links li:last-child a { border-bottom: 1px solid var(--line); }
 
 .links a span { color: var(--ash); }
 
@@ -168,7 +174,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   position: relative;
   display: grid;
   place-items: center;
-  background: #f7f5f3;
+  background: var(--plate);
   overflow: hidden;
   min-height: 160px;
 }
@@ -244,64 +250,44 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   text-align: left;
 }
 
+.summary { text-align: left; }
+
 .prices li {
   display: grid;
-  grid-template-columns: 3.2em 1fr auto;
-  gap: 12px;
+  grid-template-columns: 4.2em 1fr auto;
+  gap: 16px;
   align-items: baseline;
-  padding: 22px 0;
-  border-top: 1px solid var(--stone);
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
   font-variant-numeric: tabular-nums;
-  font-size: 18px;
-  letter-spacing: -0.01em;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 .prices li:not(.total)::before {
   counter-increment: item;
   content: counter(item, decimal-leading-zero);
   color: var(--ash);
-  font-size: 13px;
+  font-size: 0.42em;
+  font-weight: 500;
   letter-spacing: 0.04em;
 }
 
 .prices .total {
-  grid-template-columns: 3.2em 1fr auto;
+  grid-template-columns: 4.2em 1fr auto;
   font-weight: 600;
-  font-size: 22px;
-  border-bottom: 1px solid var(--stone);
+  font-size: clamp(36px, 4.4vw, 64px);
+  border-bottom: 1px solid var(--line);
 }
 
 .prices .total::before { content: ""; }
 
-.close {
-  margin-top: 48px;
-  margin-bottom: 18px;
-  text-align: center;
-  color: var(--graphite);
-}
-
-.narrow .button { display: flex; width: fit-content; margin-inline: auto; }
-
-.button {
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 10px 22px;
-  background: var(--ink);
-  color: var(--eggshell);
-  border-radius: 9999px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0;
-}
-
-.button:hover { background: var(--graphite); }
-
 .footer {
   margin-top: 120px;
   padding: 28px 0 48px;
-  border-top: 1px solid var(--stone);
+  border-top: 1px solid var(--line);
 }
 
 .footer p {
@@ -322,8 +308,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 
 @media (max-width: 640px) {
   :root { --gutter: 12px; }
-  .hero { padding: 72px 0 56px; }
-  .block { padding-top: 72px; }
+  .block { padding: 48px 0 64px; }
   h1 { font-size: clamp(56px, 16vw, 88px); }
   .offset .square,
   .stagger .frame:nth-child(2),
