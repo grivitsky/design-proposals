@@ -101,6 +101,8 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   min-height: 100svh;
 }
 
+[hidden] { display: none !important; }
+
 .hero {
   place-items: center;
   padding: 48px 0;
