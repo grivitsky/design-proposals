@@ -445,7 +445,8 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 
 .prices:hover li::before,
 .phases:hover .num,
-.phases:hover .time { color: inherit; }
+.phases:hover .time,
+.phases:hover .price { color: inherit; }
 
 .prices li:not(.total)::before {
   counter-increment: item;
@@ -476,8 +477,9 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 
 .phases li {
   display: grid;
-  grid-template-columns: 72px 1fr auto;
-  align-items: baseline;
+  grid-template-columns: 72px minmax(0, 1fr) 160px;
+  align-items: start;
+  column-gap: 24px;
   padding: 22px 0;
   border-top: 1px solid var(--line);
   font-size: clamp(28px, 3.4vw, 44px);
@@ -492,6 +494,14 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   color: var(--ash);
   font-size: 0.42em;
   font-weight: 500;
+  padding-top: 0.35em;
+}
+
+.phases .copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
 }
 
 .phases .aside {
@@ -499,24 +509,32 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   flex-direction: column;
   align-items: flex-end;
   gap: 6px;
-}
-
-.phases .price {
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
+  padding-top: 0.42em;
 }
 
 .phases .time {
-  font-size: 0.45em;
+  font-size: 17px;
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 1;
-  color: var(--smoke);
+  line-height: 1.2;
+  color: #fff;
 }
 
+.phases li:hover .time { color: #fff; }
+
+.phases .price {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: var(--ash);
+  font-variant-numeric: tabular-nums;
+}
+
+.phases li:hover .price { color: var(--ash); }
+
 .phases .detail {
-  grid-column: 2 / -1;
-  margin: 10px 0 0;
+  margin: 0;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0;
