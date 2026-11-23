@@ -273,6 +273,8 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   line-height: 1.05;
 }
 
+.prices li:last-child { border-bottom: 1px solid var(--line); }
+
 .prices li:not(.total)::before {
   counter-increment: item;
   content: counter(item, decimal-leading-zero);
@@ -289,7 +291,38 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   border-bottom: 1px solid var(--line);
 }
 
-.prices .total::before { content: ""; }
+.note {
+  margin-top: 20px;
+  color: var(--smoke);
+  font-size: 16px;
+}
+
+.phases {
+  margin-top: 28px;
+  counter-reset: phase;
+}
+
+.phases li {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  align-items: baseline;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.phases li:last-child { border-bottom: 1px solid var(--line); }
+
+.phases li::before {
+  counter-increment: phase;
+  content: counter(phase);
+  color: var(--ash);
+  font-size: 0.42em;
+  font-weight: 500;
+}
 
 .footer {
   margin-top: 120px;
