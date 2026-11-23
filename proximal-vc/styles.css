@@ -1,7 +1,6 @@
 /*
   Proximal Ventures — design proposal
-  ElevenLabs-style reference, set entirely in Inter.
-  Headings are 600 rather than the reference's 300.
+  Eggshell editorial page. Inter only. Headings at 600.
 */
 
 @font-face {
@@ -15,7 +14,6 @@
 
 :root {
   --eggshell: #fdfcfc;
-  --taupe: #f5f3f1;
   --stone: #ebe8e4;
   --ink: #000000;
   --graphite: #44403b;
@@ -24,8 +22,8 @@
   --line: var(--stone);
   --slate: var(--smoke);
   --link: var(--ink);
-  --max: 1120px;
-  --radius: 20px;
+  --max: 1080px;
+  --gutter: 20px;
 }
 
 *,
@@ -48,8 +46,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, p, ul { margin: 0; }
-ul { padding: 0; list-style: none; }
+h1, h2, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
 a { color: inherit; }
 
 :focus-visible {
@@ -57,9 +55,7 @@ a { color: inherit; }
   outline-offset: 3px;
 }
 
-::selection {
-  background: var(--taupe);
-}
+::selection { background: #f0eeeb; }
 
 .skip {
   position: absolute;
@@ -77,60 +73,72 @@ a { color: inherit; }
 .skip:focus { top: 12px; z-index: 2; }
 
 .shell {
-  width: min(var(--max), calc(100% - 40px));
+  width: min(var(--max), calc(100% - 48px));
   margin-inline: auto;
 }
 
-@media (min-width: 800px) {
-  .shell { width: min(var(--max), calc(100% - 96px)); }
-}
+.center { text-align: center; }
+
+.narrow { width: min(720px, calc(100% - 48px)); }
 
 h1, h2 {
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
 }
 
-h1 { font-size: clamp(40px, 5.5vw, 56px); }
+h1 {
+  font-size: clamp(72px, 13vw, 148px);
+}
 
-h2 { font-size: clamp(32px, 3.4vw, 36px); }
+h2 { font-size: clamp(40px, 5vw, 64px); }
 
-.hero { padding: 120px 0 8px; }
+.hero {
+  padding: 18vh 0 10vh;
+}
 
-.sub {
-  margin-top: 14px;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
+.kicker {
+  margin-bottom: 28px;
+  color: var(--smoke);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .quiet {
-  margin-top: 14px;
+  margin-top: 36px;
   color: var(--smoke);
-  font-size: 14px;
-  letter-spacing: 0.01em;
+  font-size: 15px;
 }
 
-.block { padding-top: 88px; }
+.block {
+  padding-top: 120px;
+  border-top: 1px solid var(--stone);
+}
+
+.head { margin-bottom: 36px; }
 
 .about {
   display: grid;
-  gap: 36px;
+  gap: 48px;
   align-items: start;
+  text-align: left;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 800px) {
   .about {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: 96px;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: 80px;
+    padding-top: 8px;
   }
 }
 
 .support {
-  margin-top: 16px;
-  max-width: 26em;
+  margin-top: 20px;
+  max-width: 18em;
   color: var(--smoke);
+  font-size: 18px;
+  line-height: 1.45;
 }
 
 .links a {
@@ -138,57 +146,39 @@ h2 { font-size: clamp(32px, 3.4vw, 36px); }
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 16px 2px;
+  padding: 18px 0;
   border-top: 1px solid var(--stone);
   text-decoration: none;
   letter-spacing: 0;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .links li:last-child a { border-bottom: 1px solid var(--stone); }
 
-.links a span {
-  color: var(--ash);
-  font-size: 14px;
-}
+.links a span { color: var(--ash); }
 
 .links a:hover span { color: var(--ink); }
 
-.panel {
-  background: var(--taupe);
-  border-radius: var(--radius);
-  padding: 32px 28px 28px;
-}
-
-@media (min-width: 800px) {
-  .panel { padding: 40px 40px 36px; }
-}
-
-.media { display: grid; gap: 12px; margin-top: 28px; }
-
-.grid { display: grid; gap: 12px; }
-
-@media (min-width: 700px) {
-  .grid.two { grid-template-columns: 1fr 1fr; }
-  .grid.three { grid-template-columns: 1fr 1fr 1fr; }
+.stage {
+  width: min(1440px, calc(100% - var(--gutter) * 2));
+  margin-inline: auto;
 }
 
 .frame {
   position: relative;
   display: grid;
   place-items: center;
-  background: var(--eggshell);
-  border: 1px solid var(--stone);
-  border-radius: 16px;
+  background: #f7f5f3;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  min-height: 160px;
 }
 
-.frame.wide { aspect-ratio: 16 / 9; }
-.frame.land { aspect-ratio: 3 / 2; }
+.frame.wide { aspect-ratio: 16 / 8; }
+.frame.cinema { aspect-ratio: 2.2 / 1; }
+.frame.land { aspect-ratio: 4 / 3; }
 .frame.square { aspect-ratio: 1; }
-.frame.portrait { aspect-ratio: 4 / 5; }
-.frame.slide { aspect-ratio: 16 / 10; }
+.frame.tall { aspect-ratio: 3 / 4; }
+.frame.portrait { aspect-ratio: 3 / 4; }
 
 .frame img,
 .frame video {
@@ -201,80 +191,125 @@ h2 { font-size: clamp(32px, 3.4vw, 36px); }
 
 .hint {
   color: var(--ash);
-  font-size: 12px;
-  letter-spacing: 0.01em;
-  line-height: 1;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.summary {
-  background: var(--eggshell);
-  border: 1px solid var(--stone);
-  border-radius: var(--radius);
-  padding: 36px 28px 32px;
+.offset {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
 }
 
-@media (min-width: 800px) {
-  .summary { padding: 44px 44px 40px; }
+@media (min-width: 760px) {
+  .offset {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: start;
+  }
+  .offset .square { margin-top: 12vh; }
 }
 
-.prices { margin-top: 8px; }
+.split {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 760px) {
+  .split {
+    grid-template-columns: 0.72fr 1.28fr;
+    align-items: start;
+  }
+}
+
+.stack { display: grid; gap: 16px; }
+
+.stagger {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 760px) {
+  .stagger {
+    grid-template-columns: 1.2fr 0.9fr 1fr;
+    align-items: start;
+  }
+  .stagger .frame:nth-child(2) { margin-top: 10vh; }
+  .stagger .frame:nth-child(3) { margin-top: 4vh; }
+}
+
+.prices {
+  margin-top: 48px;
+  counter-reset: item;
+  text-align: left;
+}
 
 .prices li {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 16px 0;
+  display: grid;
+  grid-template-columns: 3.2em 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 22px 0;
   border-top: 1px solid var(--stone);
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0;
+  font-size: 18px;
+  letter-spacing: -0.01em;
 }
 
-.prices li:last-child { border-bottom: 1px solid var(--stone); }
+.prices li:not(.total)::before {
+  counter-increment: item;
+  content: counter(item, decimal-leading-zero);
+  color: var(--ash);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
 
-.prices .total { font-weight: 600; letter-spacing: -0.01em; }
+.prices .total {
+  grid-template-columns: 3.2em 1fr auto;
+  font-weight: 600;
+  font-size: 22px;
+  border-bottom: 1px solid var(--stone);
+}
+
+.prices .total::before { content: ""; }
 
 .close {
-  margin-top: 36px;
-  margin-bottom: 16px;
+  margin-top: 48px;
+  margin-bottom: 18px;
+  text-align: center;
   color: var(--graphite);
 }
 
+.narrow .button { display: flex; width: fit-content; margin-inline: auto; }
+
 .button {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 8px 18px;
+  min-height: 44px;
+  padding: 10px 22px;
   background: var(--ink);
   color: var(--eggshell);
-  border: 1px solid var(--ink);
   border-radius: 9999px;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 1.2;
 }
 
-.button:hover { background: var(--graphite); border-color: var(--graphite); }
+.button:hover { background: var(--graphite); }
 
 .footer {
-  margin-top: 72px;
-  padding: 28px 0 40px;
+  margin-top: 120px;
+  padding: 28px 0 48px;
   border-top: 1px solid var(--stone);
-}
-
-.footer .shell {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 8px 24px;
 }
 
 .footer p {
   color: var(--smoke);
   font-size: 14px;
 }
+
+.footer p + p { margin-top: 4px; }
 
 @media (prefers-reduced-motion: no-preference) {
   main { animation: in 0.5s ease; }
@@ -285,9 +320,12 @@ h2 { font-size: clamp(32px, 3.4vw, 36px); }
   to { opacity: 1; }
 }
 
-@media (max-width: 420px) {
-  .shell { width: min(var(--max), calc(100% - 32px)); }
-  .hero { padding-top: 72px; }
-  .block { padding-top: 64px; }
-  .panel, .summary { padding: 24px 20px 22px; }
+@media (max-width: 640px) {
+  :root { --gutter: 12px; }
+  .hero { padding: 72px 0 56px; }
+  .block { padding-top: 72px; }
+  h1 { font-size: clamp(56px, 16vw, 88px); }
+  .offset .square,
+  .stagger .frame:nth-child(2),
+  .stagger .frame:nth-child(3) { margin-top: 0; }
 }
