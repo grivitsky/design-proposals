@@ -159,6 +159,28 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   line-height: 1.45;
 }
 
+.socials {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0 0;
+}
+
+.socials a {
+  color: var(--smoke);
+  text-decoration: none;
+  font-size: 17px;
+  letter-spacing: 0;
+  transition: color var(--ease), transform var(--ease);
+}
+
+.socials:hover a { color: rgba(255, 255, 255, 0.34); }
+
+.socials a:hover,
+.js .reveal.in .socials a:hover {
+  color: #fff;
+  transform: translateX(8px);
+}
+
 .links a {
   position: relative;
   display: flex;
@@ -549,6 +571,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 .js .reveal h2,
 .js .reveal .kicker,
 .js .reveal .support,
+.js .reveal .socials a,
 .js .reveal .note,
 .js .reveal .button {
   opacity: 0;
@@ -564,6 +587,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 .js .reveal.in h2,
 .js .reveal.in .kicker,
 .js .reveal.in .support,
+.js .reveal.in .socials a,
 .js .reveal.in .note,
 .js .reveal.in .button {
   opacity: 1;
@@ -603,6 +627,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   .js .reveal h2,
   .js .reveal .kicker,
   .js .reveal .support,
+  .js .reveal .socials a,
   .js .reveal .note,
   .js .reveal .button,
   .links a,
