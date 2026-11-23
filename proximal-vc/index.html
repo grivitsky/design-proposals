@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proximal Ventures — Design proposal</title>
+  <meta name="description" content="Design proposal for Proximal Ventures. Prepared by Mikita.">
+  <meta name="theme-color" content="#fdfcfc">
+  <link rel="icon" href="/proximal-vc/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/proximal-vc/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/proximal-vc/styles.css">
+  <!--
+    Drop an image or video into a .frame. It covers the hint.
+
+    <img src="assets/logo.jpg" alt="">
+    <video src="assets/logo.mp4" controls playsinline></video>
+  -->
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <main id="content">
+    <header class="hero">
+      <div class="shell">
+        <h1>Proximal Ventures</h1>
+        <p class="sub">Design proposal</p>
+        <p class="quiet">Prepared by Mikita</p>
+      </div>
+    </header>
+
+    <section class="block" id="about">
+      <div class="shell about">
+        <div>
+          <h2>About me</h2>
+          <p class="support">Short bio placeholder.</p>
+        </div>
+        <ul class="links">
+          <li><a href="#">Project one <span aria-hidden="true">→</span></a></li>
+          <li><a href="#">Project two <span aria-hidden="true">→</span></a></li>
+          <li><a href="#">Project three <span aria-hidden="true">→</span></a></li>
+          <li><a href="#">Project four <span aria-hidden="true">→</span></a></li>
+          <li><a href="#">Project five <span aria-hidden="true">→</span></a></li>
+          <li><a href="#">Project six <span aria-hidden="true">→</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="logo">
+      <div class="shell">
+        <article class="panel">
+          <h2>Logo</h2>
+          <div class="media">
+            <div class="frame wide" role="img" aria-label="Image"><span class="hint">Image</span></div>
+            <div class="grid two">
+              <div class="frame square" role="img" aria-label="Image"><span class="hint">Image</span></div>
+              <div class="frame square" role="img" aria-label="Image"><span class="hint">Image</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="landing">
+      <div class="shell">
+        <article class="panel">
+          <h2>Landing page</h2>
+          <div class="media">
+            <div class="frame wide" role="img" aria-label="Image"><span class="hint">Image</span></div>
+            <div class="grid three">
+              <div class="frame land" role="img" aria-label="Image"><span class="hint">Image</span></div>
+              <div class="frame land" role="img" aria-label="Image"><span class="hint">Image</span></div>
+              <div class="frame land" role="img" aria-label="Image"><span class="hint">Image</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="guidelines">
+      <div class="shell">
+        <article class="panel">
+          <h2>Brand guidelines</h2>
+          <div class="media">
+            <div class="frame land" role="img" aria-label="Image"><span class="hint">Image</span></div>
+            <div class="grid two">
+              <div class="frame portrait" role="img" aria-label="Image"><span class="hint">Image</span></div>
+              <div class="frame portrait" role="img" aria-label="Image"><span class="hint">Image</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="presentation">
+      <div class="shell">
+        <article class="panel">
+          <h2>Presentation template</h2>
+          <div class="media">
+            <div class="frame wide" role="img" aria-label="Image"><span class="hint">Image</span></div>
+            <div class="grid two">
+              <div class="frame slide" role="img" aria-label="Image"><span class="hint">Image</span></div>
+              <div class="frame slide" role="img" aria-label="Image"><span class="hint">Image</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="summary">
+      <div class="shell">
+        <article class="summary">
+          <h2>Summary</h2>
+          <ul class="prices">
+            <li><span>Logo</span><span>$1,000</span></li>
+            <li><span>Landing page</span><span>$2,500</span></li>
+            <li><span>Brand guidelines</span><span>$1,000</span></li>
+            <li><span>Presentation template</span><span>$500</span></li>
+            <li class="total"><span>Total</span><span>$5,000</span></li>
+          </ul>
+          <p class="close">To start, write.</p>
+          <a class="button" href="mailto:hello@example.com?subject=Proximal%20Ventures">Contact</a>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="shell">
+      <p>Proximal Ventures</p>
+      <p>Prepared by Mikita</p>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('a[href="#"]').forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>
