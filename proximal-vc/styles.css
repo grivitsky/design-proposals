@@ -166,32 +166,38 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   margin: 16px 0 0;
 }
 
-.socials a,
-.links a {
+.socials a {
+  display: flex;
   color: #fff;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  text-decoration: none;
   transition: color 200ms ease;
 }
 
-.socials a {
-  font-size: 17px;
-  letter-spacing: 0;
-}
-
-.socials a:hover,
-.links a:hover { color: var(--smoke); }
+.socials a:hover { color: var(--smoke); }
 
 .links a {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   padding: 22px 0;
   border-top: 1px solid var(--line);
+  text-decoration: none;
   letter-spacing: 0;
   font-size: 17px;
+  transition: color var(--ease), transform var(--ease);
+}
+
+.links a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 1px;
+  width: 0;
+  background: #fff;
+  transition: width var(--ease);
 }
 
 .links li:last-child a { border-bottom: 1px solid var(--line); }
@@ -201,9 +207,27 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   font-size: 13px;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  transition: color var(--ease);
 }
 
-.links .arrow { margin-left: 6px; }
+.links .arrow {
+  display: inline-block;
+  margin-left: 10px;
+  transition: transform var(--ease);
+}
+
+.links:hover a { color: rgba(255, 255, 255, 0.34); }
+
+.links a:hover {
+  color: #fff;
+  transform: translateX(8px);
+}
+
+.links a:hover::before { width: 100%; }
+
+.links a:hover .meta { color: var(--ink); }
+
+.links a:hover .arrow { transform: translateX(5px) rotate(-35deg); }
 
 .stage {
   width: min(1440px, calc(100% - var(--gutter) * 2));
@@ -562,6 +586,11 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 .js .reveal.in .button {
   opacity: 1;
   transform: none;
+}
+
+.js .reveal .socials a,
+.js .reveal.in .socials a {
+  transition: opacity var(--ease), transform var(--ease), color 200ms ease;
 }
 
 .js .reveal.in .tile:nth-child(1),
