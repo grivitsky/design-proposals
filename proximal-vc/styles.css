@@ -33,10 +33,7 @@
 
 html { color-scheme: dark; }
 
-html.lenis,
-html.lenis body { height: auto; }
-
-.lenis.lenis-smooth { scroll-behavior: auto; }
+html { scroll-snap-type: y proximity; }
 
 body {
   margin: 0;
@@ -104,6 +101,13 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   flex-direction: column;
   justify-content: safe center;
   min-height: 100svh;
+  scroll-snap-align: start;
+}
+
+.snap-end {
+  height: 1px;
+  width: 100%;
+  scroll-snap-align: end;
 }
 
 .hero {
