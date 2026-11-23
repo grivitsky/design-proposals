@@ -1,19 +1,6 @@
-Font substitutes in this folder
---------------------------------
-Saans, Saans Mono, and Serrif (the Intercom reference faces) are not freely
-available. This proposal uses these Google Fonts substitutes, self-hosted:
-
-- Saans      → Inter            (inter-latin.woff2)
-- Saans Mono → IBM Plex Mono    (ibm-plex-mono-400-latin.woff2, ibm-plex-mono-500-latin.woff2)
-- Serrif     → Newsreader       (newsreader-latin.woff2)
-
-Copyright
-- Inter: Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
-- IBM Plex Mono: Copyright 2017 IBM Corp. (https://github.com/IBM/plex)
-- Newsreader: Copyright 2020 The Newsreader Project Authors (https://github.com/productiontype/newsreader)
-
-Each face is licensed under the SIL Open Font License, Version 1.1.
-The license text follows.
+Inter is the stand-in for SF Pro on this page.
+Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
+Licensed under the SIL Open Font License, Version 1.1.
 
 Copyright (c) 2016 The Inter Project Authors (https://github.com/rsms/inter)
 
