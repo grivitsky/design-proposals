@@ -494,10 +494,23 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   font-weight: 500;
 }
 
+.phases .aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.phases .price {
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
 .phases .time {
   font-size: 0.45em;
   font-weight: 500;
   letter-spacing: 0;
+  line-height: 1;
   color: var(--smoke);
 }
 
