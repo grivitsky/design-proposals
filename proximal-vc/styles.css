@@ -254,7 +254,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 
 .prices li {
   display: grid;
-  grid-template-columns: 4.2em 1fr auto;
+  grid-template-columns: 72px 1fr auto;
   gap: 16px;
   align-items: baseline;
   padding: 28px 0;
@@ -276,7 +276,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 }
 
 .prices .total {
-  grid-template-columns: 4.2em 1fr auto;
+  grid-template-columns: 72px 1fr auto;
   font-weight: 600;
   font-size: clamp(36px, 4.4vw, 64px);
   border-bottom: 1px solid var(--line);
