@@ -27,7 +27,7 @@
   --spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-html { scroll-snap-type: y proximity; }
+html { scroll-snap-type: none; }
 
 *,
 *::before,
@@ -101,19 +101,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   flex-direction: column;
   justify-content: safe center;
   min-height: 100svh;
-  scroll-snap-align: none;
 }
-
-.slide:not(.is-tall) { scroll-snap-align: start; }
-
-.snap-edge {
-  height: 1px;
-  width: 100%;
-  pointer-events: none;
-}
-
-.is-tall,
-.is-tall .snap-edge { scroll-snap-align: none; }
 
 .hero {
   place-items: center;
@@ -141,7 +129,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 
 .about {
   display: grid;
-  gap: 48px;
+  gap: 40px;
   align-items: start;
   text-align: left;
 }
@@ -149,16 +137,15 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 @media (min-width: 800px) {
   .about {
     grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-    gap: 80px;
-    padding-top: 8px;
+    gap: 40px;
   }
 }
 
 .avatar {
   display: block;
-  width: 96px;
-  height: 96px;
-  margin: 22px 0 0;
+  width: 144px;
+  height: 144px;
+  margin: 0 0 32px;
   border-radius: 50%;
   object-fit: cover;
   transition: transform var(--spring);
@@ -167,7 +154,7 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 .avatar:hover { transform: scale(1.05); }
 
 .support {
-  margin-top: 20px;
+  margin-top: 24px;
   max-width: 28em;
   color: var(--smoke);
   font-size: 16px;
@@ -247,12 +234,12 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
   display: block;
   width: 100%;
   height: auto;
-  transition: transform var(--spring);
+  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .tile:hover img,
 .tile:hover video {
-  transform: scale(1.04) translateY(-4px);
+  transform: scale(1.02) translateY(-2px);
   will-change: transform;
 }
 
@@ -634,7 +621,9 @@ h2 { font-size: clamp(40px, 5vw, 64px); }
 
 @media (max-width: 640px) {
   :root { --gutter: 12px; }
-  .avatar { width: 72px; height: 72px; }
+  .avatar { width: 104px; height: 104px; margin-bottom: 22px; }
+  .support { margin-top: 16px; }
+  .about { gap: 28px; }
   .block { padding: 48px 0 64px; }
   h1 { font-size: clamp(56px, 16vw, 88px); }
   .offset .square,
